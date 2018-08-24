@@ -25,3 +25,5 @@ test/data/
 # Gradle files
 /.gradle/
 /build/
+.classpath
+.project
