@@ -134,7 +134,12 @@ public class AddressBook {
     private static final String COMMAND_EXIT_WORD = "exit";
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
-
+    
+    private static final String COMMAND_COUNT_WORD = "count";
+    private static final String COMMAND_COUNT_PREFIX = "Total number of people in the AddressBook: ";
+    private static final String COMMAND_COUNT_DESC = "Counts how many people are in the AddressBook.";
+    private static final String COMMAND_COUNT_EXAMPLE = COMMAND_COUNT_WORD;
+    
     private static final String DIVIDER = "===================================================";
 
 
@@ -362,25 +367,36 @@ public class AddressBook {
         final String commandType = commandTypeAndParams[0];
         final String commandArgs = commandTypeAndParams[1];
         switch (commandType) {
-        case COMMAND_ADD_WORD:
-            return executeAddPerson(commandArgs);
-        case COMMAND_FIND_WORD:
-            return executeFindPersons(commandArgs);
-        case COMMAND_LIST_WORD:
-            return executeListAllPersonsInAddressBook();
-        case COMMAND_DELETE_WORD:
-            return executeDeletePerson(commandArgs);
-        case COMMAND_CLEAR_WORD:
-            return executeClearAddressBook();
-        case COMMAND_HELP_WORD:
-            return getUsageInfoForAllCommands();
-        case COMMAND_EXIT_WORD:
-            executeExitProgramRequest();
-        default:
-            return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
+	        case COMMAND_ADD_WORD:
+	            return executeAddPerson(commandArgs);
+	        case COMMAND_FIND_WORD:
+	            return executeFindPersons(commandArgs);
+	        case COMMAND_LIST_WORD:
+	            return executeListAllPersonsInAddressBook();
+	        case COMMAND_DELETE_WORD:
+	            return executeDeletePerson(commandArgs);
+	        case COMMAND_CLEAR_WORD:
+	            return executeClearAddressBook();
+	        case COMMAND_HELP_WORD:
+	            return getUsageInfoForAllCommands();
+	        case COMMAND_EXIT_WORD:
+	            executeExitProgramRequest();
+	        case COMMAND_COUNT_WORD:
+	        	return getPersonCount();
+	        default:
+	            return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
     }
-
+    
+    /**
+     * Constructs a message indicating how many people are in the Address Book currently.
+     * 
+     * @return a String message indicating how many people are in the Address Book.
+     */
+    private static String getPersonCount() {
+    	return COMMAND_COUNT_PREFIX + ALL_PERSONS.size();
+    }
+    
     /**
      * Splits raw user input into command word and command arguments string
      *
@@ -1081,6 +1097,7 @@ public class AddressBook {
                 + getUsageInfoForDeleteCommand() + LS
                 + getUsageInfoForClearCommand() + LS
                 + getUsageInfoForExitCommand() + LS
+                + getUsageInfoForCountCommand() + LS
                 + getUsageInfoForHelpCommand();
     }
 
@@ -1127,6 +1144,12 @@ public class AddressBook {
     private static String getUsageInfoForExitCommand() {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_EXIT_DESC)
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE);
+    }
+    
+    /** Returns the string for showing 'count' command usage instruction */
+    private static String getUsageInfoForCountCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_COUNT_WORD, COMMAND_COUNT_DESC)
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_COUNT_EXAMPLE);
     }
 
 

@@ -70,6 +70,7 @@
 || 	Example: clear
 || 
 || exit: Exits the program.	Example: exit
+|| count: Counts how many people are in the AddressBook.	Example: count
 || help: Shows program usage instructions.	Example: help
 || ===================================================
 || Enter command: || [Command entered:  fgdfgs]
@@ -93,6 +94,7 @@
 || 	Example: clear
 || 
 || exit: Exits the program.	Example: exit
+|| count: Counts how many people are in the AddressBook.	Example: count
 || help: Shows program usage instructions.	Example: help
 || ===================================================
 || Enter command: || [Command entered:  clear]
@@ -290,6 +292,9 @@
 || 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
 || 
 || 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:	count]
+|| Total number of people in the AddressBook: 2
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
